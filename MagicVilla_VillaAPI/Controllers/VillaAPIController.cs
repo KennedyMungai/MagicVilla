@@ -71,6 +71,16 @@ public class VillaAPIController : ControllerBase
     [HttpDelete("{id:int}", Name="DeleteVilla")]
     public IActionResult DeleteVilla(int id)
     {
+        if(id == 0)
+        {
+            return BadRequest();
+        }
 
+        VillaDTO villa = VillaStore.villaList.FirstOrDefault(u => u.Id == id);
+
+        if(villa is null)
+        {
+            return NotFound();
+        }
     }
 }
