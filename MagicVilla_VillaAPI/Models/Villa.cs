@@ -11,4 +11,6 @@ public class Villa
     [Required(ErrorMessage = "You have to have a name")]
     [MaxLength(30)]
     public string Name { get; set; } = string.Empty;
+    public int Occupancy { get; set; }
+    public int SquareFoot { get; set; }
 }
