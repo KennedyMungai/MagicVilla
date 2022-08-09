@@ -1,4 +1,5 @@
 using MagicVilla_VillaAPI.Data;
+using MagicVilla_VillaAPI.Models;
 using MagicVilla_VillaAPI.Models.Dto;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -51,7 +52,7 @@ public class VillaAPIController : ControllerBase
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public ActionResult<VillaDTO> CreateVilla([FromBody]VillaDTO villaDTO)
     {
-        if(VillaStore.villaList.FirstOrDefault(u => u.Name.ToLower() == villaDTO.Name.ToLower()) != null)
+        if(db.Villas.FirstOrDefault(u => u.Name.ToLower() == villaDTO.Name.ToLower()) != null)
         {
             ModelState.AddModelError("Duplicate Villa Names", "Villa Already Exists");
             return BadRequest(ModelState);
@@ -67,12 +68,25 @@ public class VillaAPIController : ControllerBase
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
 
-        villaDTO.Id = VillaStore.villaList
+        villaDTO.Id = db.Villas
                         .OrderByDescending(u => u.Id)
                         .FirstOrDefault()
                         .Id + 1;
 
-        VillaStore.villaList.Add(villaDTO);
+        Villa model = new Villa()
+        {
+            Amenity = villaDTO.Amenity,
+            Details = villaDTO.Details,
+            Id = villaDTO.Id,
+            ImageUrl = villaDTO.ImageUrl,
+            Name = villaDTO.Name,
+            Occupancy = villaDTO.Occupancy,
+            Rate = villaDTO.Rate,
+            Sqft = villaDTO.Sqft
+        };
+
+        db.Villas.Add(model);
+        db.SaveChanges();
 
         return CreatedAtRoute("GetVilla", new {id = villaDTO.Id}, villaDTO);
     }
