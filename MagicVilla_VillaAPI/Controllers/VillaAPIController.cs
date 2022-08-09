@@ -119,5 +119,12 @@ public class VillaAPIController : ControllerBase
         {
             return BadRequest();
         }
+
+        var villa = VillaStore.villaList.FirstOrDefault(u => u.Id  == id);
+
+        if (villa is null)
+        {
+            return BadRequest();
+        }
     }
 }
