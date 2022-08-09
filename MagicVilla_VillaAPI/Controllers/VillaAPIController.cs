@@ -42,6 +42,12 @@ public class VillaAPIController : ControllerBase
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public ActionResult<VillaDTO> CreateVilla([FromBody]VillaDTO villaDTO)
     {
+        if(VillaStore.villaList.FirstOrDefault(u => u.Name.ToLower() == villaDTO.Name.ToLower()) != null)
+        {
+            ModelState.AddModelError("Duplicate Villa Names", "Villa Already Exists");
+            return BadRequest(ModelState);
+        }
+
         if(villaDTO is null)
         {
             return BadRequest(villaDTO);
