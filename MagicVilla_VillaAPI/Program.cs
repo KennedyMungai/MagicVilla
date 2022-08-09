@@ -9,6 +9,8 @@ Log.Logger = new LoggerConfiguration()
                 .WriteTo.File("log/villaLogs.txt", rollingInterval: RollingInterval.Day)
                 .CreateLogger();
 
+builder.Host.UseSerilog();
+
 builder.Services.AddControllers(options => {
     // options.ReturnHttpNotAcceptable=true;
 }).AddNewtonsoftJson()
