@@ -82,5 +82,9 @@ public class VillaAPIController : ControllerBase
         {
             return NotFound();
         }
+
+        VillaStore.villaList.Remove(villa);
+
+        return NoContent();
     }
 }
