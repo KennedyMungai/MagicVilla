@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace MagicVilla_VillaAPI.Controllers;
 
 [ApiController]
-[Route("api/VillaAPI")]
+[Route("api/[controller]")]
 public class VillaAPIController : ControllerBase
 {
     [HttpGet]
