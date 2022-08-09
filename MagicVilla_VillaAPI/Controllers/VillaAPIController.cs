@@ -15,8 +15,6 @@ public class VillaAPIController : ControllerBase
     }
 
     [HttpGet("{id:int}")]
-    public VillaDTO GetVilla(int id)
-    {
-        return VillaStore.villaList[id];
-    }
+    public VillaDTO GetVilla(int id) => VillaStore.villaList
+                                        .FirstOrDefault(u => u.Id == id);
 }
