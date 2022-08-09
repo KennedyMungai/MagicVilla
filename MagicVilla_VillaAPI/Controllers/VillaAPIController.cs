@@ -1,4 +1,5 @@
 using MagicVilla_VillaAPI.Data;
+using MagicVilla_VillaAPI.Logging;
 using MagicVilla_VillaAPI.Models.Dto;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -9,9 +10,11 @@ namespace MagicVilla_VillaAPI.Controllers;
 [Route("api/VillaAPI")]
 public class VillaAPIController : ControllerBase
 {
-    public VillaAPIController()
+    private readonly ILogging logger;
+
+    public VillaAPIController(ILogging logger)
     {
-        
+        this.logger = logger;
     }
 
     [HttpGet]
