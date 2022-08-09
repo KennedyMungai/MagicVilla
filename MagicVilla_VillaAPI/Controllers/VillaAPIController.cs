@@ -133,5 +133,7 @@ public class VillaAPIController : ControllerBase
         {
             return BadRequest(ModelState);
         }
+
+        return NoContent();
     }
 }
