@@ -69,6 +69,9 @@ public class VillaAPIController : ControllerBase
     }
 
     [HttpDelete("{id:int}", Name="DeleteVilla")]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
     public IActionResult DeleteVilla(int id)
     {
         if(id == 0)
