@@ -153,14 +153,41 @@ public class VillaAPIController : ControllerBase
             return BadRequest();
         }
 
-        var villa = VillaStore.villaList.FirstOrDefault(u => u.Id  == id);
+        var villa = db.Villas.FirstOrDefault(u => u.Id  == id);
+
+        VillaDTO villaDTO = new()
+        {
+            Amenity = villa.Amenity,
+            Details = villa.Details,
+            Id = villa.Id,
+            ImageUrl = villa.ImageUrl,
+            Name = villa.Name,
+            Occupancy = villa.Occupancy,
+            Rate = villa.Rate,
+            Sqft = villa.Sqft
+        };
 
         if (villa is null)
         {
             return BadRequest();
         }
 
-        patchDTO.ApplyTo(villa, ModelState);
+        patchDTO.ApplyTo(villaDTO, ModelState);
+
+        Villa model = new Villa()
+        {
+            Amenity = villaDTO.Amenity,
+            Details = villaDTO.Details,
+            Id = villaDTO.Id,
+            ImageUrl = villaDTO.ImageUrl,
+            Name = villaDTO.Name,
+            Occupancy = villaDTO.Occupancy,
+            Rate = villaDTO.Rate,
+            Sqft = villaDTO.Sqft
+        };
+
+        db.Villas.Update(model);
+        db.SaveChanges();
 
         if(!ModelState.IsValid)
         {
