@@ -53,5 +53,9 @@ public class VillaAPIController : ControllerBase
                         .OrderByDescending(u => u.Id)
                         .FirstOrDefault()
                         .Id + 1;
+
+        VillaStore.villaList.Add(villaDTO);
+
+        return Ok(villaDTO);
     }
 }
