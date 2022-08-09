@@ -32,6 +32,7 @@ public class VillaAPIController : ControllerBase
     {
         if (id == 0)
         {
+            _logger.LogError("Get villa Error with Id: " + id);
             return BadRequest();
         }
 
