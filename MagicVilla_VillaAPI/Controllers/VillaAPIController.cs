@@ -13,4 +13,10 @@ public class VillaAPIController : ControllerBase
     {
         return VillaStore.villaList;
     }
+
+    [HttpGet("{id:int}")]
+    public VillaDTO GetVilla(int id)
+    {
+        return VillaStore.villaList[id];
+    }
 }
