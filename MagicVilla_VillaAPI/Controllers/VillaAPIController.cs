@@ -20,6 +20,7 @@ public class VillaAPIController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     public ActionResult<IEnumerable<VillaDTO>> GetVillas()
     {
+        _logger.LogInformation("Getting all villas");
         return Ok(VillaStore.villaList);
     }
 
