@@ -9,6 +9,7 @@ namespace MagicVilla_VillaAPI.Controllers;
 public class VillaAPIController : ControllerBase
 {
     [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public ActionResult<IEnumerable<VillaDTO>> GetVillas()
     {
         return Ok(VillaStore.villaList);
