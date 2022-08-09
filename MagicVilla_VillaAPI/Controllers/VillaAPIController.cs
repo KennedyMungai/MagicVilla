@@ -102,14 +102,15 @@ public class VillaAPIController : ControllerBase
             return BadRequest();
         }
 
-        VillaDTO villa = VillaStore.villaList.FirstOrDefault(u => u.Id == id);
+        var villa = db.Villas.FirstOrDefault(u => u.Id == id);
 
         if(villa is null)
         {
             return NotFound();
         }
 
-        VillaStore.villaList.Remove(villa);
+        db.Villas.Remove(villa);
+        db.SaveChanges();
 
         return NoContent();
     }
