@@ -35,4 +35,18 @@ public class VillaAPIController : ControllerBase
 
         return Ok(villa);
     } 
+
+    [HttpPost]
+    public ActionResult<VillaDTO> CreateVilla([FromBody]VillaDTO villaDTO)
+    {
+        if(villaDTO is null)
+        {
+            return BadRequest(villaDTO);
+        }
+
+        if(villaDTO.Id > 0)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError);
+        }
+    }
 }
