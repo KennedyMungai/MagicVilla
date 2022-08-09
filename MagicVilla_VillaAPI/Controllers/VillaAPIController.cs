@@ -91,7 +91,7 @@ public class VillaAPIController : ControllerBase
         return NoContent();
     }
 
-    [HttpPut]
+    [HttpPut("{id:int}", Name="UpdateVilla")]
     public IActionResult UpdateVilla(int id, [FromBody]VillaDTO villaDTO)
     {
         if (villaDTO == null || id != villaDTO.Id)
