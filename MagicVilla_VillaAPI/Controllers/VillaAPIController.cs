@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace MagicVilla_VillaAPI.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/VillaAPI")]
 public class VillaAPIController : ControllerBase
 {
     public IEnumerable<Villa> GetVillas()
