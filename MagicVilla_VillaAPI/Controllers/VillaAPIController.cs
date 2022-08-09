@@ -1,3 +1,4 @@
+using MagicVilla_VillaAPI.Data;
 using MagicVilla_VillaAPI.Models;
 using MagicVilla_VillaAPI.Models.Dto;
 using Microsoft.AspNetCore.Mvc;
@@ -11,9 +12,6 @@ public class VillaAPIController : ControllerBase
     [HttpGet]
     public IEnumerable<VillaDTO> GetVillas()
     {
-        return new List<VillaDTO> {
-            new VillaDTO{Id = 1, Name = "Villa 1", CreatedDate = DateTime.Now},
-            new VillaDTO{Id = 1, Name = "Villa 2", CreatedDate = DateTime.Now}
-        };
+        return VillaStore.villaList;
     }
 }
