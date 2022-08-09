@@ -59,6 +59,6 @@ public class VillaAPIController : ControllerBase
 
         VillaStore.villaList.Add(villaDTO);
 
-        return CreatedAtRoute(, villaDTO);
+        return CreatedAtRoute("GetVilla", new {id = villaDTO.Id}, villaDTO);
     }
 }
