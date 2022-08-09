@@ -126,5 +126,12 @@ public class VillaAPIController : ControllerBase
         {
             return BadRequest();
         }
+
+        patchDTO.ApplyTo(villa, ModelState);
+
+        if(!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
     }
 }
