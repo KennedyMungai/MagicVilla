@@ -8,7 +8,7 @@ public class Villa
     [Key]
     [Required]
     public int Id { get; set; }
-    [Required]
+    [Required(ErrorMessage = "You have to have a name")]
     [MaxLength(30)]
     public string Name { get; set; } = string.Empty;
 }
