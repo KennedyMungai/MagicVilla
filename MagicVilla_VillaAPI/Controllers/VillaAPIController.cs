@@ -94,6 +94,9 @@ public class VillaAPIController : ControllerBase
     [HttpPut]
     public IActionResult UpdateVilla(int id, [FromBody]VillaDTO villaDTO)
     {
-
+        if (villaDTO == null || id != villaDTO.Id)
+        {
+            return BadRequest();
+        }
     }
 }
