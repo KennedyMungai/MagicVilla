@@ -98,5 +98,7 @@ public class VillaAPIController : ControllerBase
         {
             return BadRequest();
         }
+
+        VillaDTO villa = VillaStore.villaList.FirstOrDefault(u => u.Id == id);
     }
 }
