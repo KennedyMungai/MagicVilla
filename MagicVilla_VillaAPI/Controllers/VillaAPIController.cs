@@ -90,4 +90,10 @@ public class VillaAPIController : ControllerBase
 
         return NoContent();
     }
+
+    [HttpPut]
+    public IActionResult UpdateVilla(int id, [FromBody]VillaDTO villaDTO)
+    {
+
+    }
 }
