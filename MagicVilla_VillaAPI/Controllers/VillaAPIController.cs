@@ -100,5 +100,10 @@ public class VillaAPIController : ControllerBase
         }
 
         VillaDTO villa = VillaStore.villaList.FirstOrDefault(u => u.Id == id);
+        villa.Name = villaDTO.Name;
+        villa.Sqft = villaDTO.Sqft;
+        villa.Occupancy = villaDTO.Occupancy;
+
+        return NoContent();
     }
 }
