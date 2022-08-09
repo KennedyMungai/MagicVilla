@@ -9,11 +9,11 @@ namespace MagicVilla_VillaAPI.Controllers;
 [Route("api/VillaAPI")]
 public class VillaAPIController : ControllerBase
 {
-    public ILogger<VillaAPIController> Logger { get; }
+    public ILogger<VillaAPIController> logger { get; }
 
     public VillaAPIController(ILogger<VillaAPIController> _logger)
     {
-        Logger = _logger;
+        logger = _logger;
     }
 
     [HttpGet]
