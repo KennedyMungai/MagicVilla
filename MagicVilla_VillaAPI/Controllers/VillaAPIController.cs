@@ -67,4 +67,10 @@ public class VillaAPIController : ControllerBase
 
         return CreatedAtRoute("GetVilla", new {id = villaDTO.Id}, villaDTO);
     }
+
+    [HttpDelete("{id:int}", Name="DeleteVilla")]
+    public IActionResult DeleteVilla(int id)
+    {
+
+    }
 }
