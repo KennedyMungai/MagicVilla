@@ -21,6 +21,7 @@ public class VillaAPIController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     public ActionResult<IEnumerable<VillaDTO>> GetVillas()
     {
+        logger.Log("Getting all villas", "Normal Log");
         return Ok(VillaStore.villaList);
     }
 
@@ -32,6 +33,7 @@ public class VillaAPIController : ControllerBase
     {
         if (id == 0)
         {
+            logger.Log("Get villa Error with Id: " + id , "error");
             return BadRequest();
         }
 
