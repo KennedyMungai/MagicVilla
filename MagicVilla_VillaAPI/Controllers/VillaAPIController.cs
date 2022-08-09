@@ -125,10 +125,20 @@ public class VillaAPIController : ControllerBase
             return BadRequest();
         }
 
-        VillaDTO villa = VillaStore.villaList.FirstOrDefault(u => u.Id == id);
-        villa.Name = villaDTO.Name;
-        villa.Sqft = villaDTO.Sqft;
-        villa.Occupancy = villaDTO.Occupancy;
+        Villa model = new Villa()
+        {
+            Amenity = villaDTO.Amenity,
+            Details = villaDTO.Details,
+            Id = villaDTO.Id,
+            ImageUrl = villaDTO.ImageUrl,
+            Name = villaDTO.Name,
+            Occupancy = villaDTO.Occupancy,
+            Rate = villaDTO.Rate,
+            Sqft = villaDTO.Sqft
+        };
+
+        db.Villas.Update(model);
+        db.SaveChanges();
 
         return NoContent();
     }
