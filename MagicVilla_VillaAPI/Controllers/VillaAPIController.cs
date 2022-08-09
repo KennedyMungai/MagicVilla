@@ -9,9 +9,11 @@ namespace MagicVilla_VillaAPI.Controllers;
 [Route("api/VillaAPI")]
 public class VillaAPIController : ControllerBase
 {
+    private readonly ApplicationDbContext db;
+
     public VillaAPIController(ApplicationDbContext _db)
     {
-
+        db = _db;
     }
 
     [HttpGet]
