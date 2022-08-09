@@ -9,6 +9,13 @@ namespace MagicVilla_VillaAPI.Controllers;
 [Route("api/VillaAPI")]
 public class VillaAPIController : ControllerBase
 {
+    public ILogger<VillaAPIController> Logger { get; }
+
+    public VillaAPIController(ILogger<VillaAPIController> _logger)
+    {
+        Logger = _logger;
+    }
+
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public ActionResult<IEnumerable<VillaDTO>> GetVillas()
