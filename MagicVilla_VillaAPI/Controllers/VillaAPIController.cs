@@ -17,6 +17,11 @@ public class VillaAPIController : ControllerBase
     [HttpGet("{id:int}")]
     public ActionResult<VillaDTO> GetVilla(int id)
     {
+        if (id == 0)
+        {
+            return BadRequest();
+        }
+
         var result = VillaStore.villaList.FirstOrDefault(u => u.Id == id);
         return Ok(result);
     } 
