@@ -2,6 +2,7 @@ using MagicVilla_VillaAPI.Data;
 using MagicVilla_VillaAPI.Models.Dto;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace MagicVilla_VillaAPI.Controllers;
 
@@ -20,7 +21,7 @@ public class VillaAPIController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     public ActionResult<IEnumerable<VillaDTO>> GetVillas()
     {
-        return Ok(VillaStore.villaList);
+        return Ok(db.Villas.ToList());
     }
 
     [HttpGet("{id:int}", Name="GetVilla")]
