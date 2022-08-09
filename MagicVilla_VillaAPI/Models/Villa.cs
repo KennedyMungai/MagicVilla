@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MagicVilla_VillaAPI.Models;
 
@@ -7,6 +8,7 @@ public class Villa
 {
     [Key]
     [Required]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
     [Required(ErrorMessage = "You have to have a name")]
     [MaxLength(30)]
