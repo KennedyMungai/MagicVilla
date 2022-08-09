@@ -15,7 +15,7 @@ public class VillaAPIController : ControllerBase
         return Ok(VillaStore.villaList);
     }
 
-    [HttpGet("{id:int}")]
+    [HttpGet("{id:int}", Name="GetVilla")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
