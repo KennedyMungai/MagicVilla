@@ -48,5 +48,10 @@ public class VillaAPIController : ControllerBase
         {
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
+
+        villaDTO.Id = VillaStore.villaList
+                        .OrderByDescending(u => u.Id)
+                        .FirstOrDefault()
+                        .Id + 1;
     }
 }
